@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1 class="heading">Tic-Tac-Toe</h1>
+
+    <div class="middle-first">
+          <div class="col">
+            <h2 class="p-names-1">Player 1 </h2>
+          </div>   
+          
+          <div class="col">
+            <div class="tictactoe-div">
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+              <button class="gamepad"></button>
+            </div>
+
+            <h2 class="end-message"></h2>
+
+            <button class="restart">Play Again</button>
+        </div>
+
+          <div class="col">
+            <h2 class="p-names-2">Player 2 (O)</h2>
+          </div>
+    </div>
+
+    <div class="middle-second">
+      <form action="">
+          <div class="col">
+            <label for="player1">Player 1</label>
+            <input class="name-input" placeholder="Enter your name" type="text" id="player1" name="player1" required>
+          </div>
+
+          <div class="tictactoe-div-before">
+            <p class="start-text">Player 1 goes first!</p>
+            <button class="start">Start Game</button>
+          </div>
+
+          <div class="col">
+            <label for="player2">Player 2</label>
+            <input class="name-input" placeholder="Enter your name" type="text" id="player2" name="player2" required>
+          </div>
+      </form>
+      
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
