@@ -23,8 +23,10 @@ function game() {
                 let a = combo[0];
                 let b = combo[1];
                 let c = combo[2];
+                
                 if (player.getList().includes(a) && player.getList().includes(b) && player.getList().includes(c)) {
                     DOMfunctions.endGame();
+                    DOMfunctions.buttonShine(a, b, c);
                     endMessage = `${player.name} Winss!!!`
                     DOMfunctions.displayMessage(endMessage);    
                 }
@@ -35,9 +37,9 @@ function game() {
         if (gameboard.getList().includes(choice)) {
             player.addToList(choice);
             if (player === player1) {
-                gameboard.getList()[choice] = "x"
+                gameboard.getList()[choice] = "X"
             } else if (player === player2) {
-                gameboard.getList()[choice] = "o"
+                gameboard.getList()[choice] = "O"
             }
         }
     }
@@ -105,6 +107,7 @@ const DOMfunctions = (function() {
             endMessage.innerHTML = "";           
             buttons.forEach((button) => {
                 button.disabled = false;
+                button.style.boxShadow = "none";
             });
             num = 1;
             displayList();            
@@ -127,15 +130,20 @@ const DOMfunctions = (function() {
         buttons.forEach((button) => {
             button.disabled = true;  
         })
-
         restartButton.style.display = "block";
-        displayP1.innerHTML = "";
-        displayP2.innerHTML = "";
     } 
     const displayMessage = (message) => {
         endMessage.innerHTML = message;
     }    
-    return {displayList, addClickers, endGame, displayMessage}
+
+    const buttonShine = (one, two, three) => {
+        buttons.forEach((button, index) => {
+            if (index === one || index === two || index === three) {
+                button.style.boxShadow = "1px 0px 15px white";
+            }
+        })
+    }
+    return {displayList, addClickers, endGame, displayMessage, buttonShine}
 })();
 
 DOMfunctions.displayList();
