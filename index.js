@@ -37,9 +37,11 @@ function game() {
         if (gameboard.getList().includes(choice)) {
             player.addToList(choice);
             if (player === player1) {
-                gameboard.getList()[choice] = "X"
+                gameboard.getList()[choice] = "X";
+                turn = "x";
             } else if (player === player2) {
-                gameboard.getList()[choice] = "O"
+                gameboard.getList()[choice] = "O";
+                turn = "o";
             }
         }
     }
@@ -73,18 +75,15 @@ const DOMfunctions = (function() {
     let name2 = document.querySelector("#player2");
     let displayP1 = document.querySelector(".p-names-1");
     let displayP2 = document.querySelector(".p-names-2");
-    let num = 1;
     
     const addClickers = () => {
         buttons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                if (num % 2 === 0) {
+                if (turn === "x") {
                     newGame.playRound(player2, index);
-                    num++;
                     displayList();
-                } else if (!num % 2 === 0) {
+                } else if (turn === "o") {
                     newGame.playRound(player1, index);
-                    num++;
                     displayList();
                 }
             })
@@ -109,7 +108,7 @@ const DOMfunctions = (function() {
                 button.disabled = false;
                 button.style.boxShadow = "none";
             });
-            num = 1;
+            turn = "o";
             displayList();            
             middleDivSecond.style.display = "flex";
             middleDivFirst.style.display = "none";
@@ -150,6 +149,7 @@ DOMfunctions.displayList();
 
 let player1 = ""; 
 let player2 = "";
+let turn = "o";
 
 DOMfunctions.addClickers();
 
